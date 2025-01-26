@@ -29,9 +29,9 @@ use pumpkin_protocol::{
     server::play::{
         Action, ActionType, SChatCommand, SChatMessage, SClientCommand, SClientInformationPlay,
         SCloseContainer, SCommandSuggestion, SConfirmTeleport, SInteract, SKeepAlive,
-        SPickItemFromBlock, SPickItemFromEntity, SPlayPingRequest, SPlayerAbilities, SPlayerAction,
-        SPlayerCommand, SPlayerPosition, SPlayerPositionRotation, SPlayerRotation, SSetCreativeSlot,
-        SSetHeldItem, SSetPlayerGround, SSwingArm, SUseItem, SUseItemOn, Status,
+        SPickItemFromBlock, SPlayPingRequest, SPlayerAbilities, SPlayerAction, SPlayerCommand,
+        SPlayerPosition, SPlayerPositionRotation, SPlayerRotation, SSetCreativeSlot, SSetHeldItem,
+        SSetPlayerGround, SSwingArm, SUseItem, SUseItemOn, Status,
     },
 };
 use pumpkin_util::math::position::BlockPos;
