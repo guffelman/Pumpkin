@@ -658,7 +658,7 @@ impl Player {
             // use another scope so we instantly unlock abilities
             let mut abilities = self.abilities.lock().await;
             abilities.set_for_gamemode(gamemode);
-        }
+        };
         self.send_abilities_update().await;
         self.living_entity
             .entity
