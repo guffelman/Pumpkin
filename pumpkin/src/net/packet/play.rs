@@ -440,9 +440,9 @@ impl Player {
             .await;
     }
 
-    pub fn handle_pick_item_from_entity(&self, _pick_item: SPickItemFromEntity) {
-        // TODO: Implement and merge any redundant code with pick_item_from_block
-    }
+    // pub fn handle_pick_item_from_entity(&self, _pick_item: SPickItemFromEntity) {
+    //     // TODO: Implement and merge any redundant code with pick_item_from_block
+    // }
 
     pub async fn handle_player_command(&self, command: SPlayerCommand) {
         if command.entity_id != self.entity_id().into() {
