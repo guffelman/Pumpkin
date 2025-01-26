@@ -22,15 +22,16 @@ use pumpkin_protocol::codec::var_int::VarInt;
 use pumpkin_protocol::server::play::SCookieResponse as SPCookieResponse;
 use pumpkin_protocol::{
     client::play::{
-        Animation, CAcknowledgeBlockChange, CCommandSuggestions, CEntityAnimation, CHeadRot, CPingResponse,
-        CPlayerChatMessage, CUpdateEntityPos, CUpdateEntityPosRot, CUpdateEntityRot, FilterType,
+        Animation, CAcknowledgeBlockChange, CCommandSuggestions, CEntityAnimation, CHeadRot,
+        CPingResponse, CPlayerChatMessage, CUpdateEntityPos, CUpdateEntityPosRot, CUpdateEntityRot,
+        FilterType,
     },
     server::play::{
         Action, ActionType, SChatCommand, SChatMessage, SClientCommand, SClientInformationPlay,
-        SConfirmTeleport, SInteract, SPickItemFromBlock, SPickItemFromEntity, SPlayPingRequest,
-        SPlayerAbilities, SPlayerAction, SPlayerCommand, SPlayerPosition, SPlayerPositionRotation,
-        SPlayerRotation, SSetCreativeSlot, SSetHeldItem, SSwingArm, SUseItem, SUseItemOn, Status,
-        SSetPlayerGround, SKeepAlive, SCloseContainer, SCommandSuggestion,
+        SCloseContainer, SCommandSuggestion, SConfirmTeleport, SInteract, SKeepAlive,
+        SPickItemFromBlock, SPickItemFromEntity, SPlayPingRequest, SPlayerAbilities, SPlayerAction,
+        SPlayerCommand, SPlayerPosition, SPlayerPositionRotation, SPlayerRotation, SSetCreativeSlot,
+        SSetHeldItem, SSetPlayerGround, SSwingArm, SUseItem, SUseItemOn, Status,
     },
 };
 use pumpkin_util::math::position::BlockPos;
@@ -649,12 +650,13 @@ impl Player {
 
     pub async fn handle_client_status(self: &Arc<Self>, client_status: SClientCommand) {
         match client_status.action_id.0 {
-            0 => { // Perform Respawn
+            0 => {
+                // Perform Respawn
                 if self.living_entity.health.load() > 0.0 {
                     return;
                 }
                 self.world().respawn_player(&self.clone(), false).await;
-                
+
                 // Restore abilities based on gamemode after respawn
                 let mut abilities = self.abilities.lock().await;
                 abilities.set_for_gamemode(self.gamemode.load());

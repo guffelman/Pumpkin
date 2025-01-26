@@ -943,7 +943,7 @@ impl Abilities {
     pub fn set_for_gamemode(&mut self, gamemode: GameMode) {
         match gamemode {
             GameMode::Creative => {
-                self.flying = false;      // Start not flying
+                self.flying = false; // Start not flying
                 self.allow_flying = true;
                 self.creative = true;
                 self.invulnerable = true;
